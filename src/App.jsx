@@ -4,6 +4,9 @@ import "./App.css";
 function App() {
   //const [count, setCount] = useState(0)
 
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+
   const birthday = [
     {
       name: "Bertie Yates",
@@ -58,6 +61,36 @@ function App() {
     setData((current) => [...current, ...newBirthday]);
   };
 
+ 
+
+  const userInput = [];
+
+  // const myForm = document.getElementById("newForm");
+  // myForm.addEventListener("submit", function(event){
+  //   event.preventDefault;
+  //   const formData = new FormData(event.target);
+  //   const newData = {};
+  //   formData.forEach(function(value, key){
+  //     newData[key] = value;
+  //   });
+  //   userInput.push(newData);
+  //   console.log(userInput);
+  // })
+
+  const onSubmit = () => {
+    const getData = {
+      name: name,
+      age: age
+    };
+
+    setData((previous) => [...previous, getData]);
+    console.log(data);
+  };
+
+
+  console.log(name);
+
+
   return (
     <div className="App">
       <div>
@@ -65,10 +98,10 @@ function App() {
         <ul>
           {data.map((item, index) => (
             <li key={item.name + index} style={{ display: "flex" }}>
-              <img
+              {/* <img
                 style={{ width: "80px", height: "80px", borderRadius: "100%" }}
                 src={item.image}
-              />
+              /> */}
               <div>
                 <h2>{item.name}</h2>
                 <p>{item.age}</p>
@@ -86,7 +119,26 @@ function App() {
           >
             New one
           </button>
-        </div>
+          <form id='newForm'>
+            <label>
+              Name:
+              <input type="text" name="name" value={name} onChange={(event)=>{
+                setName(() => event.target.value);
+              }}/>
+            </label>
+            <br />
+            <label>
+              Age:
+              <input type="number" name="age" value={age} onChange={(event) => {
+                setAge(() => event.target.value);
+              }}/>
+            </label>
+            <br />
+            <button type="submit" onClick={onSubmit}>Submit</button>
+          </form>
+
+        </div> 
+
       </div>
     </div>
   );
