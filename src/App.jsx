@@ -61,9 +61,7 @@ function App() {
     setData((current) => [...current, ...newBirthday]);
   };
 
- 
-
-  const userInput = [];
+  // const userInput = [];
 
   // const myForm = document.getElementById("newForm");
   // myForm.addEventListener("submit", function(event){
@@ -80,16 +78,11 @@ function App() {
   const onSubmit = () => {
     const getData = {
       name: name,
-      age: age
+      age: age,
     };
-
     setData((previous) => [...previous, getData]);
     console.log(data);
   };
-
-
-  console.log(name);
-
 
   return (
     <div className="App">
@@ -119,26 +112,36 @@ function App() {
           >
             New one
           </button>
-          <form id='newForm'>
+          <div>
             <label>
               Name:
-              <input type="text" name="name" value={name} onChange={(event)=>{
-                setName(() => event.target.value);
-              }}/>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(event) => {
+                  setName(() => event.target.value);
+                }}
+              />
             </label>
             <br />
             <label>
               Age:
-              <input type="number" name="age" value={age} onChange={(event) => {
-                setAge(() => event.target.value);
-              }}/>
+              <input
+                type="number"
+                name="age"
+                value={age}
+                onChange={(event) => {
+                  setAge(() => event.target.value);
+                }}
+              />
             </label>
             <br />
-            <button type="submit" onClick={onSubmit}>Submit</button>
-          </form>
-
-        </div> 
-
+            <button type="submit" onClick={() => onSubmit()}>
+              Submit
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
