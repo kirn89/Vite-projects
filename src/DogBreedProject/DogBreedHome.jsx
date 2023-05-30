@@ -34,7 +34,7 @@ const DogBreedHome = () => {
         const config = {
           method: "get",
           maxBodyLength: Infinity,
-          url: "https://api.thedogapi.com/v1/breeds",
+          url: "https://api.thedogapi.com/v1/breeds?limit=10&page=0",
           headers: {
             "Content-Type": "application/json",
             "x-api-key":
@@ -43,8 +43,7 @@ const DogBreedHome = () => {
         };
 
         const response = await axios(config);
-        console.log(response);
-        console.log(JSON.stringify(response.data));
+
         setBreedDetail(response.data);
       } catch (error) {
         console.log(error);

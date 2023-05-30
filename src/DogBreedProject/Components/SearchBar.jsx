@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
@@ -8,26 +7,15 @@ const SearchBar = ({ search, setSearch, data }) => {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchResult((prev) => {
-      return [
-        ...prev,
-        ...data?.filter((item) => {
-          search === item?.name;
-        }),
-      ];
+    setSearchResult(() => {
+      return data?.filter((item) => {
+        return item?.name.includes(search);
+      });
     });
   };
-  console.log(
-    data &&
-      data?.filter((item) => {
-        item?.name === search;
-      })
-  );
 
-  console.log(searchResult, search);
   return (
     <div className="form search">
       <section className="form-search d-flex justify-content-center">
