@@ -43,6 +43,7 @@ const DogBreedHome = () => {
         };
 
         const response = await axios(config);
+        console.log(response.data);
 
         setBreedDetail(response.data);
       } catch (error) {
@@ -61,6 +62,7 @@ const DogBreedHome = () => {
           search={search}
           setSearch={setSearch}
           data={breedDetail}
+          setBreedDetail={setBreedDetail}
         ></SearchBar>
         <BreedDetail data={breedDetail}></BreedDetail>
         <RandomBreed>Random Breed</RandomBreed>

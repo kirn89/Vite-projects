@@ -1,20 +1,21 @@
 import React from "react";
 import { useState } from "react";
 
-const SearchBar = ({ search, setSearch, data }) => {
-  const [searchResult, setSearchResult] = useState([]);
+const SearchBar = ({ search, setSearch, data, setBreedDetail }) => {
+  //const [searchResult, setSearchResult] = useState([]);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchResult(() => {
+    setBreedDetail(() => {
       return data?.filter((item) => {
-        return item?.name.includes(search);
+        return item?.name.toLowerCase().includes(search);
       });
     });
   };
+  console.log(data);
 
   return (
     <div className="form search">

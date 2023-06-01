@@ -1,6 +1,9 @@
 import React from "react";
 
 const BreedDetail = ({ data }) => {
+  if (data === null) {
+    
+  }
   return data.map((item, index) => {
     return (
       <div>
