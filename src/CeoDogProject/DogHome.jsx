@@ -7,27 +7,39 @@ import axios from "axios";
 
 const DogHome = () => {
   const [dogDetail, setDogDetail] = useState([]);
+  console.log(dogDetail);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchBreedData = async () => {
       try {
-        const response = await axios.all([
-          axios.get("https://dog.ceo/api/breeds/list/all"),
-          axios.get("https://dog.ceo/api/breeds/image/random"),
-        ]);
-
-        console.log(response[0].data);
+        const response = await axios.get("https://dog.ceo/api/breeds/list/all");
+        console.log(response);
+        const message = Object.keys(response.data.message);
+        // const arrayBreed = Object.keys(message);
+        // console.log(arrayBreed);
+        setDogDetail(message);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const fetchImageData = async () => {
+      try {
+        const response = await axios.get(
+          "https://dog.ceo/api/breeds/image/random"
+        );
+        console.log(response);
         //const message = response[0].data.message;
         // const arrayBreed = Object.keys(message);
         // console.log(arrayBreed);
-        setDogDetail(response[0].data);
+        //setDogDetail(response[0].data);
         console.log(dogDetail);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchData();
+    fetchBreedData();
+    fetchImageData();
   }, []);
   return (
     <div>

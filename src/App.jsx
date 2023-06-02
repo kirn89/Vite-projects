@@ -6,9 +6,9 @@ import DogHome from "./CeoDogProject/DogHome";
 const App = () => {
   return (
     <div>
-      <CocktailDB></CocktailDB>
+      {/* <CocktailDB></CocktailDB> */}
       {/* <DogBreedHome></DogBreedHome> */}
-      {/* <DogHome></DogHome> */}
+      <DogHome></DogHome>
     </div>
   );
 };
